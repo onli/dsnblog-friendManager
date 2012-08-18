@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>FriendManager - Add Friend</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="alternate"  type="application/rss+xml" href="/feed" />
+    </head>
+
+    <body>
+        <% if ! authorized? %>
+            Step 1/2
+            <%= render_login_button %>
+        <% else %>
+            Step 2/2
+            Confirm: Add <%= name %> from <%= url %> to <%= ownUrl %>?
+            <button>Cancel</button>
+            <form method="POST" action="<%= ownUrl %>/people/<%= name %>/friend">
+                <input type="hidden" name="url" value="<%= url %>" />
+                <button type="submit">OK</button>
+            </form>
+            
+        <% end %>
+
+    </body>
+</html>
+    

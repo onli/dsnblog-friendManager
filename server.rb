@@ -20,7 +20,7 @@ get '/addFriend' do
 end
 
 get '/addURL' do
-    if ! authorized? && ! session.has_key?[:origin]
+    if ! authorized? && ! session.has_key?("origin")
         session[:origin] = request.referrer 
         erb :addURL, :locals => { :url => params[:url], :mail => params[:id] }
     else

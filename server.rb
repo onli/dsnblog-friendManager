@@ -13,16 +13,10 @@ set :port, 4200
 
 get '/addFriend' do
     #einloggen, eigene url holen, an diese url neuen freund senden
-    
-    db = Database.new
-    ownUrl = nil
     if authorized?
-        ownUrl = db.getUrl(authorized_email)
+        ownUrl = Database.new.getUrl(authorized_email)
     end
-    puts params[:name] 
-    puts params[:url]
-    puts ownUrl
-    erb :addFriend, :locals => { :ownUrl => ownUrl, :name => params[:name], :url => params[:url] }
+    erb :addFriend, :locals => { :ownUrl => ownUrl, :name => params[:id], :url => params[:url] }
 end
 
 get '/addURL' do

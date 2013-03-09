@@ -6,9 +6,8 @@
         <title>FriendManager - Add Friend</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-
-        <link rel="stylesheet" href="/css/main.css">
-        <link rel="alternate"  type="application/rss+xml" href="/feed" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="/subscribe.js"></script>
     </head>
 
     <body>
@@ -17,15 +16,12 @@
             <%= render_login_button %>
         <% else %>
             Step 2/2
-            Confirm: Add <%= name %> from <%= url %> to <%= ownUrl %>?
-            <button>Cancel</button>
-            <form method="POST" action="<%= ownUrl %>/people/<%= name %>/friend">
+            Confirm: Add <span id="id"><%= name %></span> from <%= url %> to <%= ownUrl %>?
+            <form method="POST" id="addFriend" action="<%= ownUrl %>/people/<%= name %>/friend">
                 <input type="hidden" name="url" value="<%= url %>" />
                 <button type="submit">OK</button>
             </form>
-            
         <% end %>
-
     </body>
 </html>
     
